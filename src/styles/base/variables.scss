@@ -1,0 +1,149 @@
+@import 'fonts';
+
+:root {
+  // Colors
+  --gray-100: #fafafa;
+  --gray-200: #e0e4e9;
+  --gray-300: #90959b;
+  --gray-400: #707478;
+  --gray-500: #292933;
+  --gray-600: #121212;
+
+  --green: #09a976;
+  --red: #ff4137;
+  --blue: #4b6bdc;
+  --yellow: #ffb700;
+
+  // Spacing and sizes
+  --min-width: 320;
+  --max-width: 1200;
+  --min-size: 18;
+
+  // calculates the ratio that scales between 0px and 1px based on the screen
+  // size
+  --screen: calc(min(100vw, var(--max-width) * 1px) - var(--min-width) * 1px);
+  --ratio: calc(var(--screen) / (var(--max-width) - var(--min-width)));
+
+  // Font-sizes
+  --size-default: calc(var(--min-size) * 1px + 4 * var(--ratio));
+  --size-h1: calc(1.75rem + 0.5 * var(--min-size) * var(--ratio));
+  --size-h2: calc(1.375rem + 0.25 * var(--min-size) * var(--ratio));
+  --size-h3: calc(1.25rem + 0.25 * var(--min-size) * var(--ratio));
+
+  // spacing
+  --s1: calc(var(--min-size) * 1px + var(--min-size) * var(--ratio));
+  --s0: calc(0.5 * var(--s1));
+  --s2: calc(1.25 * var(--s1));
+  --s3: calc(1.5 * var(--s1));
+
+  // general-sizes
+  --page-width: calc(var(--max-width) * 1px);
+  --logo-size: calc(1.25 * var(--min-size) * 1px + 4 * var(--ratio));
+  --card: 18rem;
+
+  // font-family
+  --sans-serif: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  --monospace: Hack, Consolas, Menlo, Monaco, 'Courier New', monospace;
+
+  // utils
+  --transition: all ease-in-out 200ms;
+}
+
+// default theme
+body {
+  --text-default: var(--gray-600);
+  --text-secondary: var(--gray-400);
+  --bg-default: var(--gray-100);
+  --bg-secondary: var(--gray-200);
+
+  --bg-footer: var(--gray-600);
+}
+
+// Themes
+body[data-theme='dark'] {
+  --text-default: var(--gray-200);
+  --text-secondary: var(--gray-300);
+  --bg-default: var(--gray-600);
+  --bg-secondary: var(--gray-500);
+}
+:root {
+	--twinkle-duration: 4s;
+}
+
+.stars-wrapper {
+	position: relative;
+	pointer-events: none;
+	width: 100vw;
+	height: 100vh;
+	background: linear-gradient(#16161d, #1f1f3a, #3b2f4a);
+	overflow: hidden;
+}
+
+.stars {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	animation: twinkle var(--twinkle-duration) ease-in-out infinite;
+
+	&:nth-child(2) {
+		animation-delay: calc(var(--twinkle-duration) * -0.33);
+	}
+	&:nth-child(3) {
+		animation-delay: calc(var(--twinkle-duration) * -0.66);
+	}
+
+	@keyframes twinkle {
+		25% {
+			opacity: 0;
+		}
+	}
+}
+
+.star {
+	fill: white;
+
+	&:nth-child(3n) {
+		opacity: 0.8;
+	}
+	&:nth-child(7n) {
+		opacity: 0.6;
+	}
+	&:nth-child(13n) {
+		opacity: 0.4;
+	}
+	&:nth-child(19n) {
+		opacity: 0.2;
+	}
+}
+
+.comet {
+	transform-origin: center center;
+	animation: comet 10s linear infinite;
+
+	@keyframes comet {
+		0%,
+		40% {
+			transform: translateX(0);
+			opacity: 0;
+		}
+		50% {
+			opacity: 1;
+		}
+		60%,
+		100% {
+			transform: translateX(-100vmax);
+			opacity: 0;
+		}
+	}
+}
+
+.comet-b {
+	animation-delay: -3.3s;
+}
+
+.comet-c {
+	animation-delay: -5s;
+}

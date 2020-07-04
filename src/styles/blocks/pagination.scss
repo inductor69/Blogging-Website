@@ -1,0 +1,37 @@
+// Pagination below blog posts
+.pagination {
+  display: grid;
+  width: 100%;
+  padding: var(--s1);
+  grid-column-gap: var(--s1);
+  grid-row-gap: calc(var(--s1));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(calc(var(--min-width) * 1px), 1fr)
+  );
+
+  a.next,
+  a.previous {
+    text-decoration-color: var(--bg-default);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 1rem 0;
+
+    > span {
+      font-size: 0.75em;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+    }
+  }
+
+  .next {
+    align-items: flex-start;
+  }
+
+  .previous {
+    align-items: flex-end;
+    text-align: right;
+  }
+}

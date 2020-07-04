@@ -1,0 +1,28 @@
+.grid {
+  display: grid;
+  grid-template-columns:
+    minmax(var(--s1), 1fr)
+    minmax(auto, var(--page-width))
+    minmax(var(--s1), 1fr);
+}
+
+.cell--left {
+  grid-column: 1;
+}
+
+.cell--middle {
+  grid-column: 2;
+}
+
+.cell--right {
+  grid-column: 3;
+}
+
+.tiles {
+  display: grid;
+  width: 100%;
+  margin: 0 auto;
+  grid-column-gap: var(--s1);
+  grid-row-gap: var(--s3);
+  grid-template-columns: repeat(auto-fit, minmax(var(--card), 1fr));
+}
